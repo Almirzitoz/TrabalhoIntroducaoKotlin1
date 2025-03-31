@@ -79,6 +79,7 @@ fun main() {
 }
 fun addMissao(idContador:Int,id: MutableList<Int>,comandantes: MutableList<String>,distanciaDaMissao:MutableList<Double>,tripulantesMissao:MutableList<Int>,mediaRefeicoes:MutableList<Double>,consumoKmMissao:MutableList<Double>,valorCombustivel:MutableList<Double>,duracao:MutableList<Int>,custoCombustivel:MutableList<Double>,combustivelNecessario:MutableList<Double>,refeicaoTripulante:MutableList<Double>,temperatura:MutableList<Double>){
     id.add(idContador)
+    println("_____Registro de missão____")
 
     print("Insira o Nome do Comandante: ")
     var nomeComandante = readLine()?:"A definir"
@@ -120,5 +121,6 @@ fun addMissao(idContador:Int,id: MutableList<Int>,comandantes: MutableList<Strin
     print("Insira a temperatura do módulo: ")
     var tempe = readLine()?.toDoubleOrNull()?:0.0
     temperatura.add(tempe)
+    println("___________________________________")
 
 }
