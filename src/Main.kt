@@ -21,26 +21,63 @@ fun main() {
 
     val refeicaoporTripulanteMissao = mutableListOf<Double>()
 
+    val temperatura = mutableListOf<Double>()
+
     println("Você deseja cadastrar quantas missões: ")
     var quantidadeMissao = readLine()?.toIntOrNull()?: 0
 
     var id = 0
 
     for (i in 1..quantidadeMissao){
-        addMissao(id,idMissao,nomeComandantes,distanciaMissao,tripulantesPorMissao,mediaDeRefeicaoTripulanteMissao,consumoPorkmMissao,valorCombustivelMissao,duracaoMissao,custoCombustivelMissao,cobustivelNecessarioMissao,refeicaoporTripulanteMissao)
+        addMissao(id,idMissao,nomeComandantes,distanciaMissao,tripulantesPorMissao,mediaDeRefeicaoTripulanteMissao,consumoPorkmMissao,valorCombustivelMissao,duracaoMissao,custoCombustivelMissao,cobustivelNecessarioMissao,refeicaoporTripulanteMissao,temperatura)
         id++
     }
-    for (i in idMissao.indices){
-        println("__________Missão__________")
-        println("ID da missão: ${idMissao[i]}")
-        println("Nome do comandante: ${nomeComandantes[i]}")
-        println(custoCombustivelMissao)
-        println(cobustivelNecessarioMissao)
-        println(refeicaoporTripulanteMissao)
-        println("__________________________")
+
+    var fim = false
+    while (fim != true){
+        println("__________Sistema__________")
+        println("Digite 1 para adicionar outras missoões")
+        println("Digite 2 para verificar a situação das missões")
+        println("Digite 3 para verificar trajes")
+        println("Digite 4 para ver as missões")
+        println("Digite 5 para sair")
+        println("___________________________")
+
+        var escolha = readLine()?.toIntOrNull()?:0
+
+        if (escolha == 1){
+            println("Quantidade de missões novas:")
+            quantidadeMissao = readLine()?.toIntOrNull()?: 0
+
+            for (i in 1..quantidadeMissao){
+                id++
+
+                addMissao(id,idMissao,nomeComandantes,distanciaMissao,tripulantesPorMissao,mediaDeRefeicaoTripulanteMissao,consumoPorkmMissao,valorCombustivelMissao,duracaoMissao,custoCombustivelMissao,cobustivelNecessarioMissao,refeicaoporTripulanteMissao,temperatura)
+            }
+        } else if(escolha == 2){
+
+        } else if(escolha == 3){
+
+        } else if(escolha == 4){
+            for (i in idMissao.indices){
+                println("_____Missão____")
+                println("ID: ${idMissao[i]}")
+                println("Comandante: ${nomeComandantes[i]}")
+                println("Tripulantes: ${tripulantesPorMissao[i]}")
+                println("Distância: ${distanciaMissao[i]}")
+                println("Duração: ${duracaoMissao[i]}")
+                println("________________")
+            }
+        } else if(escolha == 5){
+            fim = true
+        } else{
+            println("Opção inválida")
+        }
+
     }
+
 }
-fun addMissao(idContador:Int,id: MutableList<Int>,comandantes: MutableList<String>,distanciaDaMissao:MutableList<Double>,tripulantesMissao:MutableList<Int>,mediaRefeicoes:MutableList<Double>,consumoKmMissao:MutableList<Double>,valorCombustivel:MutableList<Double>,duracao:MutableList<Int>,custoCombustivel:MutableList<Double>,combustivelNecessario:MutableList<Double>,refeicaoTripulante:MutableList<Double>){
+fun addMissao(idContador:Int,id: MutableList<Int>,comandantes: MutableList<String>,distanciaDaMissao:MutableList<Double>,tripulantesMissao:MutableList<Int>,mediaRefeicoes:MutableList<Double>,consumoKmMissao:MutableList<Double>,valorCombustivel:MutableList<Double>,duracao:MutableList<Int>,custoCombustivel:MutableList<Double>,combustivelNecessario:MutableList<Double>,refeicaoTripulante:MutableList<Double>,temperatura:MutableList<Double>){
     id.add(idContador)
 
     print("Insira o Nome do Comandante: ")
@@ -79,5 +116,9 @@ fun addMissao(idContador:Int,id: MutableList<Int>,comandantes: MutableList<Strin
 
     var totalRefeicao = tripulantesdamissao*mediaR*dias
     refeicaoTripulante.add(totalRefeicao)
+
+    print("Insira a temperatura do módulo: ")
+    var tempe = readLine()?.toDoubleOrNull()?:0.0
+    temperatura.add(tempe)
 
 }
