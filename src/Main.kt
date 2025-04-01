@@ -33,6 +33,7 @@ fun main() {
         id++
     }
 
+    infosDistancia(distanciaMissao)
     var fim = false
     while (fim != true){
         println("__________Sistema__________")
@@ -54,6 +55,7 @@ fun main() {
 
                 addMissao(id,idMissao,nomeComandantes,distanciaMissao,tripulantesPorMissao,mediaDeRefeicaoTripulanteMissao,consumoPorkmMissao,valorCombustivelMissao,duracaoMissao,custoCombustivelMissao,cobustivelNecessarioMissao,refeicaoporTripulanteMissao,temperatura)
             }
+            infosDistancia(distanciaMissao)
         } else if(escolha == 2){
 
         } else if(escolha == 3){
@@ -123,4 +125,16 @@ fun addMissao(idContador:Int,id: MutableList<Int>,comandantes: MutableList<Strin
     temperatura.add(tempe)
     println("___________________________________")
 
+}
+fun infosDistancia(listaDistancia:MutableList<Double>){
+    println("Média de distância da missão: ${listaDistancia.average()}")
+    println("Maior distância: ${listaDistancia.max()}")
+    println("Menor distâcia: ${listaDistancia.min()}")
+    var contador = 0
+    for (i in listaDistancia.indices){
+        if(listaDistancia[i] == 0.0){
+            contador+= 1
+        }
+    }
+    println("Total de missões falhadas: $contador")
 }
